@@ -29,7 +29,7 @@ html,body{
   border: 2px solid transparent;
 }
 #account-dropdowns{
-  width: 185px;
+  width: 100%;
 }
 .account-dropdowns-within{
   font-size: 1.4rem;
@@ -142,4 +142,65 @@ html,body{
 .homeLinks:hover{
   color: black;
 }
-
+/*---------------------------------------login-register-----------------------------------------*/
+.register-login-header{
+width: auto;
+margin: auto;
+text-align: center;
+}
+.register-login-header img{
+  height: 75px;
+}
+.register-login-body{
+  width: fit-content;
+  display: grid;
+  grid-column: span 1;
+  margin:auto;
+}
+.register-login-body input{
+  background: black;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 15px 0;
+  padding: 10px 50px;
+  border-radius:5px;
+  border: none;
+}
+.register-login-body input::placeholder{
+  color: white;
+}
+.register-login-body input:focus::placeholder{
+color: transparent;
+}
+.register-login-container .modal-header, .register-login-container .modal-footer{
+  border: none;
+}
+.register-login-container .modal-content{
+  background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+  border: none;
+}
+.register-login-container{
+  background-image: url('./images/loginRegisterbBg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.register-login-footer{
+  width: fit-content;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+}
+.register-login-footer>*{
+  width: 150px;
+  height: 40px;
+}
+#terms-of-use{
+  width: fit-content;
+  margin: auto;
+  display: flex;
+}
+#terms-of-use a{
+margin-left:0.3rem;
+color: turquoise;
+}
