@@ -1,0 +1,49 @@
+GET http://localhost:8080/api/accountDescription/getData
+#############
+GET http://localhost:8080/api/department/getData
+#############
+GET http://localhost:8080/api/course/getData
+#############
+GET http://localhost:8080/api/course/getDataByDepartmentName/
+#############
+
+POST http://localhost:8080/api/register/student
+Content-Type: application/json
+
+{
+    "course":"something",
+    "email":"Guy1@gmail.com",
+    "first_name":"guy",
+    "last_name":"ashkenazi",
+    "password": "123451",
+    "phone":"053111111",
+    "username": "Guy1"
+}
+
+#############
+POST http://localhost:8080/api/register/student
+Content-Type: application/json
+
+{
+    "department_name":"something",
+    "email":"Guy1@gmail.com",
+    "first_name":"guy",
+    "last_name":"ashkenazi",
+    "password": "123451",
+    "phone":"053111111",
+    "username": "Guy11"
+}
+##########
+
+POST http://localhost:8080/api/login/student
+Content-Type: application/json
+
+{
+    "username": "Guy1",
+    "password": "123451"
+}
+#########
+
+DELETE http://localhost:8080/user/deleteUser/Test123
+
+
