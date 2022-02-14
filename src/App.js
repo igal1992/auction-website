@@ -1,7 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Home from './components/home';
-import Auction from './components/auction';
+import Admin from './components/admin';
+import Stats from './components/stats';
 import {Route,Routes} from 'react-router-dom'
 import TopNav from './components/topNav';
 
@@ -11,7 +11,8 @@ function App() {
       <TopNav />
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/auction" element={<Auction />}/>
+        <Route path="/admin" element={<Admin />}/>
+        <Route path="/stats" element={<Stats />}/>
       </Routes>
     </div>
 
