@@ -21,7 +21,7 @@ Router.post('/product/addNew',(req,res)=>{
     var catagory = req.body.newProduct.catagory;
     var image = req.body.newProduct.image;
     var uploader = req.body.newProduct.uploader;
-    Product.find({title:req.body.title})
+    Product.find({title:req.body.newProduct.title})
     .then((result)=>{
         if(result.length === 0 && price !== ""&& description !== ""&& image !== ""){
             const product = new Product({
@@ -33,9 +33,9 @@ Router.post('/product/addNew',(req,res)=>{
                 uploader
             })
             product.save();
-            res.send("product added")
+            res.status(200).send('product added')
         }else{
-            res.sendStatus(400)
+            res.status(400).send('product exists already')
         }
     }).catch((err)=>{
         res.sendStatus(400);
@@ -67,8 +67,7 @@ Router.post('/product/edit',(req,res)=>{
             doc[0].catagory=catagory;
             doc[0].image=image;
             doc[0].uploader = uploader;
-            doc[0].save();   
-            res.send("product edited")
+            doc[0].save(); 
         }else{
             res.sendStatus(400);
         }

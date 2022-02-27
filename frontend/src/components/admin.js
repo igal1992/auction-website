@@ -49,15 +49,15 @@ function Admin () {
         }
     }
     return(
-        <div><div id='admin-title-container'><h1 id='admin-title'>Admin</h1></div>
+        <div>
             <AdminLogin/>
-            <Navbar bg="dark" variant="dark">
+            <Navbar style={{background:'#555'}} variant="dark">
                     <Nav id = {'admin-top'}>
-                        <ButtonGroup id="admin-toggle-outer">
+                        <div id="admin-toggle-outer">
                             <Button className={toggleProducts} onClick={toggle} name={'products'}>products</Button>
                             <Button className={toggleAccounts} onClick={toggle} name={'accounts'}>accounts</Button>
                             <Button className={toggleStats} onClick={toggle} name={'stats'}>stats</Button>
-                        </ButtonGroup>
+                        </div>
                     </Nav>
             </Navbar>
             <Stats className={statsContainer}/>

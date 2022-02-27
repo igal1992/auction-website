@@ -1,14 +1,24 @@
 import {Table} from 'react-bootstrap';
 import React,{useState, useEffect} from 'react';
 import { getRecentSells } from './utils';
+import PaginationComp from './pagination';
+
 
 function RecentSells(){
 
     const [data,setData] = useState([]);
+    const [currentPage,setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(10);
     var counter = 1;
     useEffect(()=>{
         getRecentSells(setData);
     },[]);
+    const indexOfLastTransaction = currentPage * postsPerPage;
+    const indexOfFIrstTransaction = indexOfLastTransaction - postsPerPage;
+    const currentTransaction = data.slice(indexOfFIrstTransaction,indexOfLastTransaction);
+    const paginate = (number) =>{
+        setCurrentPage(number);
+    }
     
 return(
     <section>
@@ -25,7 +35,7 @@ return(
                     </tr>
                 </thead>
                 <tbody>
-                {data.map(transaction=>{
+                {currentTransaction.map(transaction=>{
                         return(
                             <tr key={transaction._id.title}>
                                 <td>{counter++}</td>
@@ -37,6 +47,7 @@ return(
                     })}
                 </tbody>
             </Table>
+            <div style={{background:'#555555',width:'100%'}}> <PaginationComp postsPerPage = {postsPerPage} totalPosts = {data.length} paginate={paginate} currentPage={currentPage} className={'pagination'}/></div>
     </section>
 )
 }
