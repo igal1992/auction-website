@@ -5,6 +5,7 @@ import AddModal from './addModal';
 import EditModal from './editModal';
 import {BiArrowToTop,BiArrowToBottom} from 'react-icons/bi';
 import {sortDown,sortUp,getAllProducts} from './utils';
+import PaginationComp from './pagination';
 
 function Products(props){
     const [products,setProducts] = useState([]);
@@ -16,6 +17,9 @@ function Products(props){
     const [priceUp,setPriceUp] = useState(false);
     const [uploaderUp,setUploaderUp] = useState(false);
     const [descriptionUp,setDescriptionUp] = useState(false);
+    const [currentPage,setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(10);
+
     var counter = 1;
     
     useEffect(()=>{
@@ -104,8 +108,15 @@ function Products(props){
         }
         setProducts(tempProducts);
     }
+    const indexOfLastProduct = currentPage * postsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - postsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct,indexOfLastProduct);
+    const paginate = (number) =>{
+        setCurrentPage(number);
+    }
+
 return(
-    <div className={props.className}>
+    <div className={props.className} style={{background:'#555'}}>
         <div className="d-grid gap-2">
             <Button variant="outline-dark" onClick={()=>{setShowAddModal(true)}} id={'product-add'}>Add Product</Button>
         </div>
@@ -116,13 +127,13 @@ return(
                 <th onClick={()=>{sortByElement('title')}}>Product Name {titleUp?<BiArrowToBottom/>:<BiArrowToTop/>}</th>
                 <th onClick={()=>{sortByElement('description')}}>Description {descriptionUp?<BiArrowToBottom/>:<BiArrowToTop/>}</th>
                 <th onClick={()=>{sortByElement('price')}}>Price {priceUp?<BiArrowToBottom/>:<BiArrowToTop/>}</th>
-                <th onClick={()=>{sortByElement('uploader')}}>Uploader {uploaderUp?<BiArrowToBottom/>:<BiArrowToTop/>}</th>
+                <th onClick={()=>{sortByElement('uploader')}}>Seller {uploaderUp?<BiArrowToBottom/>:<BiArrowToTop/>}</th>
                 <th onClick={()=>{sortByElement('catagory')}}>Catagory {catagoryUp?<BiArrowToBottom/>:<BiArrowToTop/>}</th>
                 <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {products.map((product)=>{
+                {currentProducts.map((product)=>{
                     return(
                             <tr key={product.title}>
                                 <td>{counter++}</td>
@@ -141,6 +152,7 @@ return(
                 })}
             </tbody>
         </Table>
+        <div style={{background:'#555555',width:'100%'}}> <PaginationComp postsPerPage = {postsPerPage} totalPosts = {products.length} paginate={paginate} currentPage={currentPage} className={'pagination'}/></div>
         <AddModal show ={showAddModal} setShow={setShowAddModal} updateProducts={setProducts}/>
         <EditModal show ={showEditModal} setShow={setShowEditModal} updateProducts={setProducts} productToEdit={productToEdit}/>
     </div>

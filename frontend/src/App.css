@@ -225,9 +225,6 @@ margin-left:0.3rem;
 color: turquoise;
 }
 /*------------------------------------------------------------------------admin-----------------------------------------------------------------------------*/
-#admin-top{
-  border-top:white 5px solid;
-}
 #admin-toggle-outer{
   width:100vw;
 }
@@ -239,17 +236,19 @@ color: turquoise;
   outline: none;
   box-shadow: none;
   background: #ffffff;
-  color:black;
+  color:#3a3a3a;
 }
 .admin-toggle-notSelected{
-  background:black;
+  background:#3a3a3a;
   color:white;
 }
 .admin-toggle-notSelected, .admin-toggle-selected{
   border: none;
-  height: 75px;
+  border-radius: 0;
+  width: 32.5%;
+  height: 50px;
   font-size: 1.5rem;
-  margin: 7px 0;
+  margin: 0px 0px 0px 10px;
 }
 .admin-toggle-notSelected:hover, .admin-toggle-selected:hover{
   background: #ffffff;
@@ -260,21 +259,18 @@ color: turquoise;
   border-radius: 0;
   border-left: none;
   border-right: none;
+  width: 10%;
+  height: 50px;
+  margin: 5px auto 15px auto;
+  background: #c96565;
+  color:white;
 }
 .hide{
   display: none;
 }
-.stats-container{
-  color:blueviolet;
-}
-.accounts-container{
-  color:black;
-}
-.products-container{
-  color:black;
-}
 #products-table{
   font-size: 1.5rem;
+  margin-bottom:0;
 }
 #admin-title{
   margin:0;
@@ -297,9 +293,28 @@ color: turquoise;
   margin: auto;
   padding: 10px 0;
 }
+.pagination{
+  margin: 0 auto 1rem auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: fit-content;
+}
+.pagination-page{
+width: 50px;
+text-align: center;
+font-size: 1.5rem;
+}
+.page-link{
+  background:#555555;
+  border:none;
+  color:white;
+}
+.page-item.active .page-link{
+background:#212529;
+}
 /*---------------------------------------------------------auction---------------------------------------------------------*/
 #auction-container{
-  background: #f3fafa;
+  background: #fafafa;
 }
 #auction-search{
   grid-column: span 2;
@@ -308,7 +323,7 @@ color: turquoise;
   height: 4.1rem;
 }
 #auction-search-input{
-  width: 92%;
+  width: 92.2%;
   height: 4rem;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -353,21 +368,23 @@ color: turquoise;
   margin: 5px 5px auto 5px;
 }
 #auction-filter-name,#auction-filter-price{
-  font-size: 1.3rem;
   position: absolute;
   color:white;
   background:#000000;
   cursor: pointer;
-  width: 165px;
-  height: 50px;
+  width: 7.5%;
   text-align: center;
-  padding-top: 7px;
+  padding: 15px 0;
+}
+#auction-filter-name:hover,#auction-filter-price:hover{
+  color:black;
+  background:white;
 }
 #auction-filter-name{
   right:0;
 }
 #auction-search-button{
-  width: 8%;
+  width: 7.8%;
   height: 4.1rem;
   background:#b39c00;
   color:white;

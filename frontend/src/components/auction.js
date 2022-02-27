@@ -9,6 +9,7 @@ import axios from "axios";
 import logo from '../images/logo.jpg';
 import { ToastAlert,sortDown,sortUp } from './utils';
 import {BiArrowToTop,BiArrowToBottom} from 'react-icons/bi';
+import PaginationComp from './pagination';
 
 
 function Auction(){
@@ -22,6 +23,8 @@ function Auction(){
     const [showAlert,setShowAlert] = useState(false);
     const [titleUp,setTitleUp] = useState(false);
     const [priceUp,setPriceUp] = useState(false);
+    const [currentPage,setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(12);
     const dispatch = useDispatch();
     useEffect(()=>{
         getAllProducts(setProducts);
@@ -68,7 +71,7 @@ function Auction(){
       }
   }
   const sortByElement = (productElemtent) =>{
-    var tempData = products;
+    var tempData = filteredProducts;
     switch(productElemtent){
         case 'title':
             if(titleUp){
@@ -99,8 +102,14 @@ function Auction(){
         default:
             break;
     }
-    dispatch(updateProducts(products));
+    dispatch(updateProducts(tempData));
 }
+    const indexOfLastProduct = currentPage * postsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - postsPerPage;
+    const currentProducts = filteredProducts.slice(indexOfFirstProduct,indexOfLastProduct);
+    const paginate = (number) =>{
+        setCurrentPage(number);
+    }
     return(
         <div id={'auction-container'}>
           <AuctionHeader original = {products}/>
@@ -108,7 +117,7 @@ function Auction(){
           <div id={'auction-filter-price'} onClick={()=>{sortByElement('price')}}>Product price {priceUp?<BiArrowToBottom/>:<BiArrowToTop/>}</div>
             <div id={'products-container-outer'}>
               <ul id ={'products-container'}>
-              {loaded && typeof filteredProducts[0] === 'object' && Object.keys(filteredProducts[0]).length !== 0?filteredProducts.map((product)=>{
+              {loaded && typeof filteredProducts[0] === 'object' && Object.keys(filteredProducts[0]).length !== 0?currentProducts.map((product)=>{
                   return(
                     <li className={'product-card-outer'} key={product.title}>
                       <Card className={'product-card'} >
@@ -132,6 +141,7 @@ function Auction(){
               }):<div id={'products-loader-container'}><Spinner animation="border" variant="dark" id={'products-loader'} /></div>}
               </ul>
             </div>
+            <div style={{background:'#555555',width:'100%'}}> <PaginationComp postsPerPage = {postsPerPage} totalPosts = {filteredProducts.length} paginate={paginate} currentPage={currentPage} className={'pagination'}/></div>
             <ToastAlert alert = {currentAlert} show={showAlert} setShow = {setShowAlert} header={currentHeader}/>
           </div>
     );

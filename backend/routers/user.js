@@ -76,8 +76,8 @@ Router.post('/user/edit',(req,res)=>{
         if(doc[0]!==undefined){
             doc[0].email=email;
             doc[0].fullName=fullName;
-            doc[0].save();   
-            res.send("user edited")
+            doc[0].save();
+            res.send("user edited");
         }else{
             res.sendStatus(400);
         }

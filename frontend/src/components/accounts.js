@@ -5,6 +5,7 @@ import EditAccount from './editAccount';
 import {BiArrowToTop,BiArrowToBottom} from 'react-icons/bi';
 import {sortDown,sortUp} from './utils';
 import {getAllAccounts} from './utils';
+import PaginationComp from './pagination';
 
 
 function Accounts(props){
@@ -13,6 +14,8 @@ function Accounts(props){
     const [emailUp,setEmailUp] = useState(false);
     const [fullNameUp,setFullNameUp] = useState(false);
     const [accountToEdit,setAccountToEdit] = useState();
+    const [currentPage,setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(10);
     var counter = 1;
     useEffect(()=>{
         getAllAccounts(setAccounts);
@@ -61,6 +64,12 @@ function Accounts(props){
         }
         setAccounts(tempAccounts);
     }
+    const indexOfLastAccount = currentPage * postsPerPage;
+    const indexOfFirstAccount = indexOfLastAccount - postsPerPage;
+    const currentAccounts = accounts.slice(indexOfFirstAccount,indexOfLastAccount);
+    const paginate = (number) =>{
+        setCurrentPage(number);
+    }
 return(
     <div className={props.className}>
         <Table variant={"dark"} striped hover id='products-table'>
@@ -73,7 +82,7 @@ return(
                 </tr>
             </thead>
             <tbody>
-                {accounts.map((account)=>{
+                {currentAccounts.map((account)=>{
                     return(
                             <tr key={account.email}>
                                 <td>{counter++}</td>
@@ -89,6 +98,7 @@ return(
                 })}
             </tbody>
         </Table>
+        <div style={{background:'#555555',width:'100%'}}> <PaginationComp postsPerPage = {postsPerPage} totalPosts = {accounts.length} paginate={paginate} currentPage={currentPage} className={'pagination'}/></div>
         <EditAccount show ={showEditModal} setShow={setShowEditModal} updateAccounts={setAccounts} accountToEdit={accountToEdit}/>
     </div>
 )
