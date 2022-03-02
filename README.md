@@ -1,5 +1,4 @@
 # auction-website
-Still In development
 A website that implements an online shop. 
 Self-designed UI/UX using react-bootstrap as another library for styling, comfortable navigation through the site, 
 allows the spectator to register and upload products to the online shop. 
