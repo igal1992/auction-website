@@ -7,3 +7,4 @@ As well as allows a regular user to control their products and their account by 
 to Login to Admin:
 username=admin
 password='Aa123456'
+link:https://xshopifyx.netlify.app/
