@@ -352,6 +352,12 @@ background:#212529;
   background: #fafafa;
   margin-top: 100px;
 }
+#auction-sortby-icon{
+  position:absolute;
+  left:-75px;
+  font-size:2rem;
+  top:10%;
+}
 #auction-search{
   border-bottom:1px #18232e solid;
   border-top:1px #18232e solid;
@@ -437,7 +443,7 @@ background:#212529;
 .auction-filterBy-button-selected{
   border-bottom: 3px solid white;
 }
-.dropdown-item.active, .dropdown-item:active{
+.auction-filterBy-button-selected.active{
   background:#4d0900;
 }
 .dropdown-menu{
@@ -588,14 +594,13 @@ ul{
   font-size: 3rem;
 }
 .product-row-image{
-  width: 35%;
-  height: 250px;
-  border-radius: 5px;
-  padding-right: 50px;
+  width: 40%;
+  height: 300px;
+  padding-right: 25px;
 }
 .product-row-outer{
   display: flex;
-  padding: 50px 40px;
+  padding: 10px 0;
   border-bottom: solid rgb(194, 186, 186) 1px;
 }
 .product-row{
@@ -606,7 +611,8 @@ ul{
 .product-row-button-container{
   position: absolute;
   right: 2.5%;
-  height: fit-content;
+  width: 20%;
+  display: block;
   text-align: center;
 }
 .product-row-body{
@@ -621,13 +627,17 @@ ul{
   background:#134a7f;
   border: transparent 3px solid;
   font-size: 1.5rem;
+  width: 100%;
+  margin-bottom: 50px;
 }
 .product-row-add{
   height: fit-content;
   border: #134a7f solid 3px;
+  width: 100%;
   background:white;
   color: #134a7f;
   font-size: 1.5rem;
+  margin-bottom: 5px;
 }
 .product-row-add:hover{
   background:#134a7f;
@@ -643,10 +653,13 @@ ul{
   margin-top: 35px;
   overflow-y: auto;
   height: 60%;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 .product-row-title{
-  font-size: 3rem;
+  font-size: 2.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 /*--------------------------------------------------------cart--------------------------------------------------------------*/
 .cart-bg{
@@ -930,32 +943,35 @@ div.solid{
     width: 100%;
     padding-bottom: 0;
   }
+  #homeTitle{
+    padding-top: 0;
+  }
   #searchBar{
     position: absolute;
-    top: 450px;
+    top: 235px;
     left: 15%;
-    height: 100px;
+    height: 75px;
     width: 80%;
     font-size: 3rem;
   }
   #searchIcon-container{
-    top:450px;
-    height: 100px;
+    top:235px;
+    height: 75px;
     left: 5%;
     width: 100px;
     position: absolute;
   }
   #topNav-outer{
-    height: 600px;
+    height: 350px;
   }
   #account{
-    font-size: 3rem;
-    margin-top: 50px;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
   }
   .links,.links-active{
     font-size: 3rem;
-    margin-left: 17.5%;
-    margin-top: 50px;
+    margin-left: 12%;
+    margin-bottom: 2.5%;
   }
   .cart-bg{
     font-size: 3rem;
@@ -997,6 +1013,12 @@ div.solid{
     height: fit-content;
     font-size: 1.3rem;
   }
+  .my-account-overview-section-body p{
+    font-size: 2rem;
+  }
+  .my-account-overview-section-body h5{
+    font-size: 2.5rem;
+  }
   .my-account-overview-section-products-titles{
     font-size: 0.9rem;
   }
@@ -1017,12 +1039,11 @@ div.solid{
     margin: auto;
   }
   #logo{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
+    margin-left:100%;
+    margin-top: -50px;
     border-radius: 100%;
-    position: absolute;
-    top: 2%;
-    left:40%;
   }
   #logo-container{
     margin-right:0;
@@ -1056,8 +1077,12 @@ div.solid{
   .auction-filterBy-button,.auction-filterBy-button-selected{
     font-size: 2.5rem;
   }
+  .auction-filterBy-button-selected:after{
+    top: 60px;
+  }
   #auction-header-sort-name,#auction-header-sort-price{
-    font-size: 2rem;
+    font-size: 1.5rem;
+    top:23px;
   }
   #auction-header-sort-price{
     right:225px;
@@ -1095,4 +1120,118 @@ div.solid{
   #auction-container{
     margin-top: 250px;
   }
+  #my-account-overview-outer,#my-account-security-outer,#my-account-stats-outer{
+    display: block;
+    width: 85vw;
+    padding-bottom: 25px;
+    height: fit-content;
+  }
+  .my-account-overview-products-container{
+    width:100%;
+  }
+  .my-account-overview-info-container, .my-account-overview-actions-container{
+    width:100%;
+  }
+  .my-account-overview-actions-container{
+    padding-bottom: 25px;
+  }
+  .my-account-overview-section-title,.my-account-security-section-title,.my-account-stats-section-title{
+    font-size: 3rem;
+  }
+  .my-account-overview-section-body button{
+    width: 100%;
+    font-size: 2rem;
+  }
+  .my-account-overview-section-button-container button{
+    width: 100%;
+  }
+  .my-account-overview-section-products-titles{
+    font-size: 1.7rem;
+  }
+  .my-account-overview-section-products-body{
+    font-size: 1.5rem;
+  }
+  .my-account-security-info-container{
+    width:100%;
+    background:white;
+    box-shadow: 1px 1px 4px #b9b8b8;
+    height: fit-content;
+    margin: 50px auto;
+  }
+  .my-account-security-danger-container{
+    width:100%;
+    background:white;
+    box-shadow: 1px 1px 4px #b9b8b8;
+    height: fit-content;
+    margin: 0 auto;
+  }
+  .my-account-security-section-body-edit{
+    font-size: 2rem;
+  }
+  .my-account-security-section-body-delete{
+    font-size: 2rem;
+  }
+  .my-account-security-section-body-p{
+    font-size: 2rem;
+  }
+  .my-account-security-section-body h5{
+    font-size: 2.5rem;
+  }
+  .my-account-stats-transactions-container{
+    width:100%;
+    background:white;
+    box-shadow: 1px 1px 4px #b9b8b8;
+    height: fit-content;
+  }
+  .my-account-stats-section-transactions-titles{
+    font-size: 2rem;
+  }
+  .my-account-stats-section-transactions-body{
+    font-size: 1.7rem;
+  }  
+.my-account-header-list-notToggled, .my-account-header-list-toggled{
+  padding: 0 40px;
+  margin-bottom: -10px;
+  font-size:2.5rem;
+}
+.my-account-header-list-toggled:after{
+  top: 35px;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #D5BA5E;
+  border-width: 10px;
+  margin-left: -10px;
+}
+#alert-body{
+  background: #212529;
+  color:white;
+  font-size: 2rem;
+  width: 500px;
+}
+#alert-header{
+  background:#dedfdf;
+  color:#373940;
+  font-size: 2rem;
+  width: 500px;
+}
+#alert-container{
+  position: fixed;
+  left:50%;
+  top:0;
+  transform: translate(-50%, 25%);
+  z-index: 1000;
+}
+.admin-accounts-container,.admin-products-container,.admin-stats-container {
+  width: 95vw;
+  border-radius:0;
+}
+#products-table{
+  font-size: 2rem;
+}
 }
