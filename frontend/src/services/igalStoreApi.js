@@ -205,12 +205,15 @@ export const userRemoveProduct = (titleToRemove,userData,setUserProducts)=>{
         })
 }
 export const adminRemoveAccount = (emailToRemove,setAccounts) =>{
-        axios.post('https://igal-shopify-backend.herokuapp.com/user/delete',{emailToRemove})
-        .then(res=>{
-            getAllAccounts(setAccounts);
-        }).catch(err=>{
-            console.log(err);
-        })
+    const user = {
+        email : emailToRemove
+    }
+    axios.post('https://igal-shopify-backend.herokuapp.com/user/admin/delete',{user})
+    .then(res=>{
+        getAllAccounts(setAccounts);
+    }).catch(err=>{
+        console.log(err);
+    })
 }
 export const adminUpdateAccountAndReload = (newAccount,setShow,updateAccounts) =>{
     axios.post('https://igal-shopify-backend.herokuapp.com/user/edit',{newAccount})
@@ -241,7 +244,7 @@ export const userEditFullName = (setShow,user) =>{
     })
 }
 export const userEditEmail = (setShow,user,dispatch,navigate) =>{
-    axios.post('http://localhost:8080/user/editEmail',{user})
+    axios.post('https://igal-shopify-backend.herokuapp.com/user/editEmail',{user})
     .then(res=>{
         setShow(false);
         localStorage.removeItem('userEmail');

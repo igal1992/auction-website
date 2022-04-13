@@ -1,6 +1,7 @@
 import {Modal,Button, Form} from 'react-bootstrap';
 import logo from '../assets/images/logo.jpg';
 import React,{useState} from 'react';
+import './popUpWindow.css';
 import { ToastAlert } from '../utils';
 import {createNewAccount} from "../services/igalStoreApi";
 

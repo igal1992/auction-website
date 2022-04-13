@@ -1,5 +1,6 @@
 import {Modal,Button} from 'react-bootstrap'; 
 import logo from '../../assets/images/logo.jpg';
+import '../popUpWindow.css';
 import React,{useState,useEffect} from 'react';
 import {adminUpdateAccountAndReload} from "../../services/igalStoreApi"
 

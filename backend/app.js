@@ -9,7 +9,7 @@ const user = require('./routers/user');
 
 //establish server uses
 app.use(cors({
-    origin: 'https://shopfiy.netlify.app',
+    origin: '*',
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
     credentials: true
 }));

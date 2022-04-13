@@ -63,6 +63,24 @@ Router.post('/user/delete',(req,res)=>{
         })
 })
 
+Router.post('/user/admin/delete',(req,res)=>{
+    User.findOne({email:req.body.user.email})
+        .then((user)=>{
+            if(user){
+                User.find({email:req.body.user.email}).deleteOne().exec()
+                .then((result) => {
+                Product.deleteMany({uploader:req.body.user.email}).then(res=>{console.log(res)})
+                res.send("user removed");
+                })
+                .catch((err) => res.send(err))
+            }else{
+                res.status(404).json({message:'No user found!'});
+            }
+        }).catch((err)=>{
+            res.status(400).json({message:"An Error occured!"});
+        })
+})
+
 //add new account to db based on sent params
 Router.post('/user/addNew',(req,res)=>{
     var email = req.body.newUser.email;

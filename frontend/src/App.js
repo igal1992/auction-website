@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Home from './pages/home';
-import Auction from './pages/auction';
-import TopNav from './components/topNav';
-import Admin from './pages/admin';
-import MyAccount from './pages/myAccount';
+import Home from './pages/home/home';
+import Auction from './pages/auction/auction';
+import TopNav from './components/topNav/topNav';
+import Admin from './pages/admin/admin';
+import MyAccount from './pages/myAccount/myAccount';
 import {Route,Routes} from 'react-router-dom';
 
 
